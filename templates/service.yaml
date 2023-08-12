@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "trdl.fullname" . }}
+  name: {{ .Values.service.name }}
   labels:
-    {{- include "trdl.labels" . | nindent 4 }}
+     {{- include "trdl.labels" . | nindent 4 }}
+  namespace: {{ .Values.ns }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+      targetPort: {{ .Values.service.port }}
   selector:
     {{- include "trdl.selectorLabels" . | nindent 4 }}
+
