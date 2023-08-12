@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trdl
+  labels:
+    app: trdl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trdl
+  template:
+    metadata:
+      labels:
+        app: trdl
+    spec:
+      containers:
+        - name: trdl
+          image: ghcr.io/anniemartina/myhttpserver/trdl:3
+          ports:
+          - containerPort: 80
+      imagePullSecrets:
+        - name: trdlsecret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trdlsvc
+  labels:
+     app: trdl
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: trdl
+
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2doY3IuaW8iOnsidXNlcm5hbWUiOiJhbm5pZW1hcnRpbmEiLCJwYXNzd29yZCI6ImdocF9NdkY4UFNaaFo0WFNQU3N4WE4xeGhtd3E3YTJRZFkxQmxQWksiLCJlbWFpbCI6ImFubi5qZXNleUBnbWFpbC5jb20iLCJhdXRoIjoiWVc1dWFXVnRZWEowYVc1aE9tZG9jRjlOZGtZNFVGTmFhRm8wV0ZOUVUzTjRXRTR4ZUdodGQzRTNZVEpSWkZreFFteFFXa3M9In19fQ==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: trdlsecret
+  namespace: default
+type: kubernetes.io/dockerconfigjson
