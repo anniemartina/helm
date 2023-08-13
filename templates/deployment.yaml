@@ -21,4 +21,4 @@ spec:
           ports:
           - containerPort: {{ .Values.service.port }}
       imagePullSecrets:
-        - name: {{ .Values.secret }}
+        - name: {{ .Values.secret.name }}
