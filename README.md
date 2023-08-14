@@ -13,7 +13,7 @@ The `trdl` Helm chart can be used to deploy the `trdl` application. The chart wi
 - [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-#### Configure Cluster Access
+#### Configure AWS and Cluster Access
 1. Create Access token for IAM User
 2. Configure aws with the above created access token, this command will create a `.aws` directory with `credentials` and `config`.
    ```
