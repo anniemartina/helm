@@ -1,6 +1,6 @@
 # Deploy TRDL Application using Helm
 
-The `trdl` Helm chart can be used to deploy the `trdl` application. The chart will deploy the following resources:
+The chart will deploy the following resources:
 
 - Secret
 - Service
@@ -23,8 +23,11 @@ The `trdl` Helm chart can be used to deploy the `trdl` application. The chart wi
    Default region name [None]: <region-name>
    Default output format [None]:
    ```
-3. Build the infracture using terraform from https://github.com/anniemartina/terraform_eks.
-4. Fetch the kubeconfig from the cluster created using terraform.
+#### Build Infrastructure
+1. Build the infrastructure using terraform from https://github.com/anniemartina/terraform_eks
+   
+#### Get cluster Access
+1. Fetch the kubeconfig from the cluster created using terraform.
    ```
    aws eks update-kubeconfig --name my-trdl-cluster --region eu-north-1
    ```
@@ -104,7 +107,7 @@ pod/trdl-59bdd54c4f-28vz7   1/1     Running   0          99s   10.0.2.114   ip-1
 pod/trdl-59bdd54c4f-97wq6   1/1     Running   0          99s   10.0.2.62    ip-10-0-2-125.eu-north-1.compute.internal   <none>           <none>
 
 NAME              TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)        AGE   SELECTOR
-service/trdlsvc   LoadBalancer   172.20.100.251   a8662b672006b4e628dc8a350ae89233-258320686.eu-north-1.elb.amazonaws.com   80:32234/TCP   99s   app.kubernetes.io/instance=trdl,app.kubernetes.io/name=trdl
+service/trdlsvc   LoadBalancer   172.20.100.251   xxxx.eu-north-1.elb.amazonaws.com   80:32234/TCP   99s   app.kubernetes.io/instance=trdl,app.kubernetes.io/name=trdl
 
 NAME                   READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                     SELECTOR
 deployment.apps/trdl   2/2     2            2           99s   trdl         ghcr.io/anniemartina/myhttpserver/trdl:1   app.kubernetes.io/instance=trdl,app.kubernetes.io/name=trdl
@@ -114,7 +117,7 @@ replicaset.apps/trdl-59bdd54c4f   2         2         2       99s   trdl        
 ```
 2. nslookup to verify that LoadBalancer resolve
 ```
-nslookup a8662b672006b4e628dc8a350ae89233-258320686.eu-north-1.elb.amazonaws.com
+nslookup xxxx.eu-north-1.elb.amazonaws.com
 ```
 Sample Output:
 ```
@@ -122,14 +125,14 @@ Server:         127.0.0.53
 Address:        127.0.0.53#53
 
 Non-authoritative answer:
-Name:   a8662b672006b4e628dc8a350ae89233-258320686.eu-north-1.elb.amazonaws.com
-Address: 16.170.44.234
-Name:   a8662b672006b4e628dc8a350ae89233-258320686.eu-north-1.elb.amazonaws.com
-Address: 13.49.236.81
+Name:   xxxx.eu-north-1.elb.amazonaws.com
+Address: x.x.x.x
+Name:   xxxx.eu-north-1.elb.amazonaws.com
+Address: x.x.x.x
 ```
 3. Place a GET request to validate the response from the trdl application
 ```
-curl http://a8662b672006b4e628dc8a350ae89233-258320686.eu-north-1.elb.amazonaws.com
+curl http://xxxx.eu-north-1.elb.amazonaws.com
 ```
 Sample Response
 ```
