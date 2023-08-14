@@ -23,7 +23,7 @@ The `trdl` Helm chart can be used to deploy the `trdl` application. The chart wi
    Default region name [None]: <region-name>
    Default output format [None]:
    ```
-4. Fetch the kubeconfig from the cluster created using terraform.
+3. Fetch the kubeconfig from the cluster created using terraform.
    ```
    aws eks update-kubeconfig --name my-trdl-cluster --region eu-north-1
    ```
