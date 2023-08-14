@@ -1,4 +1,4 @@
-# Deploy using Helm
+# Deploy TRDL Application using Helm
 
 The `trdl` Helm chart can be used to deploy the `trdl` application. The chart will deploy the following resources:
 
@@ -23,7 +23,8 @@ The `trdl` Helm chart can be used to deploy the `trdl` application. The chart wi
    Default region name [None]: <region-name>
    Default output format [None]:
    ```
-3. Fetch the kubeconfig from the cluster created using terraform.
+3. Build the infracture using terraform from https://github.com/anniemartina/terraform_eks.
+4. Fetch the kubeconfig from the cluster created using terraform.
    ```
    aws eks update-kubeconfig --name my-trdl-cluster --region eu-north-1
    ```
