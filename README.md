@@ -6,6 +6,9 @@ The chart will deploy the following resources:
 - Service
 - Deployment
 
+## Architecture
+![image](https://github.com/anniemartina/helm/assets/137068841/6bd40cb1-282f-405a-8c23-20bb5ebdf307)
+
 ## Prerequisites
 
 #### Install tools
